@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+  <title>Web LED Control</title>
+</head>
+<body>
+  <center>
+  <br>
+    <strong>HOME IOT Service</strong>
+  </br>
+  <teble style="width:50%">
+    <tr>
+      <td class="auto-style6" style="height:81; width:30%">
+        <strong>
+          <a class="btn btn-success" href="led_control_act?led=1">LED 켜기</a>
+        </strong>
+      </td>
+      <td class="auto-style6" style="height:81; width:30%">
+        <strong>
+          <a class="btn btn-danger" href="led_control_act?led=2">LED 끄기</a>
+        </strong>
+      </td>
+    </tr>
+  </teble>
+  <br/>
+  <div class="card" style="width: 18rem;">
+    {% if ret == 'ON' %}
+    <img src="static/on.png" class="card-img-top"/>
+    {% elif ret == 'OFF' %}
+    <img src="static/off.png" class="card-img-top"/>
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">LED 상태</h5>
+      <p class="card-text">LED is {{ret}}</p>
+    </div>
+  </div>
+  <!-- <strong>LED is {{ret}}</strong> -->
+  </center>
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['on', 'off'],
+        datasets: [{
+            label: '# of Votes',
+            data: {{ values }},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+<style type="text/css">
+  .auto-style1{
+    text-align: center;
+  }
+  .auto-style3{
+    background-color: #008000;
+  }
+  .auto-style6{
+    border-style: solid;
+    border-color: #000000;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #FF9900;
+  }
+</style>
