@@ -1,17 +1,17 @@
 import RPi.GPIO as GPIO
 
-led_pin=17
+led_pin = 17
 
 GPIO.setmode(GPIO.BCM)
 
-GPIO.setup(led_pin,GPIO.OUT)
+GPIO.setup(led_pin, GPIO.OUT)
 
-GPIO.output(led_pin,True)
+GPIO.output(led_pin, True)
 
 try:
-  while True:
-    pass
+    while True:
+        pass
 except KeyboardInterrupt:
-  pass
-  
+    pass
+
 GPIO.cleanup()
