@@ -1,0 +1,27 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<div>
+    <canvas id="myChart">
+    </canvas>
+</div>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var data = {
+        // The type of chart we want to create
+        type: 'line',
+        // The data for our dataset
+        data: {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [{
+                label: "My First dataset",
+                backgroundColor: 'rgb(255, 99, 132)',
+                fill:false, // line의 아래쪽을 색칠할 것인가? 
+                borderColor: 'rgb(255, 99, 132)',
+                lineTension:0.1, // 값을 높이면, line의 장력이 커짐.
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        },
+        // Configuration options go here
+        options: {}
+    }
+    var chart = new Chart(ctx, data);
+</script>
